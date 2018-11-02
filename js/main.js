@@ -13,18 +13,18 @@ var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{
 }).addTo(map);
 
 // create request for GeoJSON
-var request = new Promise(function(resolve, reject){
+var request = new Promise(function (resolve, reject) {
 	var request = new XMLHttpRequest();
-	request.addEventListener("load", function(){ resolve(this.responseText) });
+	request.addEventListener("load", function () { resolve(this.responseText) });
 	request.open("GET", "data/duluthprecinctsWGS84.geojson");
 	request.send();
 });
 
 // handle request
-request.then(function(values){
+request.then(function (values) {
 	// parse the incoming datasets into JSON format
 	var precincts = JSON.parse(values);
-	console.log('precincts:', precincts):
+	console.log('precincts:', precincts),
 
 	//create a polygon layer for precincts
 	var precinctsLayer = L.geoJSON(precincts, {
