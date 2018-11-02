@@ -24,7 +24,7 @@ var request = new Promise(function (resolve, reject) {
 request.then(function (values) {
 	// parse the incoming datasets into JSON format
 	var precincts = JSON.parse(values);
-	console.log('precincts:', precincts),
+	console.log('precincts:', precincts):
 
 	//create a polygon layer for precincts
 	var precinctsLayer = L.geoJSON(precincts, {
