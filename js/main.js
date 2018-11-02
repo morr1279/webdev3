@@ -10,7 +10,7 @@ var map = L.map("map", {
 var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(mop);
+}).addTo(map);
 
 // create request for GeoJSON
 var request = new Promise(function(resolve, reject){
@@ -24,7 +24,7 @@ var request = new Promise(function(resolve, reject){
 request.then(function(values){
 	// parse the incoming datasets into JSON format
 	var precincts = JSON.parse(values);
-	console.log('precincts:', precincts);
+	console.log('precincts:', precincts):
 
 	//create a polygon layer for precincts
 	var precinctsLayer = L.geoJSON(precincts, {
