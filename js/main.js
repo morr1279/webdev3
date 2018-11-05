@@ -1,18 +1,19 @@
 // main.js
 
 // initialize map
-var map = L.map("map", {
-    centr: [46.73, -92.107],
-    zoom: 11
+var map = L.map("map"), ({
+centr:
+,[46.73, -92.107]
+zoom: 11
 });
 
 // add base layer
-var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var OpenStreetMap_Mapnik=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	attribution: '&copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// create request for GeoJSON
+ //create request for GeoJSON
 var request = new Promise(function (resolve, reject) {
 	var request = new XMLHttpRequest();
 	request.addEventListener("load", function () { resolve(this.responseText) });
@@ -20,9 +21,9 @@ var request = new Promise(function (resolve, reject) {
 	request.send();
 });
 
-// handle request
+ //handle request
 request.then(function (values) {
-	// parse the incoming datasets into JSON format
+//parse the incoming datasets into JSON format
 	var precincts = JSON.parse(values);
 	console.log('precincts:', precincts):
 
@@ -38,7 +39,7 @@ request.then(function (values) {
 		    	// console.log('demVote:', demVote);
 		    	// console.log('repVote:', repVote);
 		    	// console.log('totalVote:', totalVote);
-		    	// console.log('thirdPartyVote:', thirdPartyVote);
+		        // console.log('thirdPartyVote:', thirdPartyVote);
 		    	console.log('pct3rd:', thirdPartyPct);
 
 		    	// assign colors from the ColorBrewer yellow-green scale
@@ -52,7 +53,7 @@ request.then(function (values) {
 		    	else if (thirdPartyPct <= 11) {
 		    		fill = '#addd8e';
 		    	}
-		    	// 12% or more
+		        // 12% or more
 		    	else {
 		    		fill = '#31a354';
 		    	}
@@ -63,9 +64,9 @@ request.then(function (values) {
 		    	// Use Colorbrewer's 5-class Red-Blue colors for this
 		    	// http://colorbrewer2.org/#type=diverging&scheme=RdBu&n=5
 
-		    	// return style specification
+		    	 //return style specification
 		        return {
-		        	color: '#636363',
+		        	color: ['#ca0020','#f4a582','#f7f7f7','#92c5de','#0571b0'],
 		        	weight: 1,
 		        	fillColor: fill,
 		        	fillOpacity: 0.6,
